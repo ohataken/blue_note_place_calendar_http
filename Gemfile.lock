@@ -4,6 +4,9 @@ GEM
     base64 (0.2.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
+    nokogiri (1.16.0-arm64-darwin)
+      racc (~> 1.4)
+    racc (1.7.3)
     rack (3.0.8)
     rack-protection (4.0.0)
       base64 (>= 0.1.0)
@@ -23,6 +26,7 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  nokogiri
   sinatra
 
 BUNDLED WITH
