@@ -18,9 +18,9 @@ get "/live/:cal" do
     cat = card.at_css("a > div.m_calCardBody > span.m_calCardCat")
 
     {
-      a_href: a["href"],
+      a_href: a && a["href"],
       day_content: day&.content,
-      image_src: image["src"],
+      image_src: image && image["src"],
       body_content: body&.content,
       cat_content: cat&.content,
     }
