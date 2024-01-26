@@ -44,7 +44,7 @@ class CalendarCard
         src: image && image["src"],
       },
       body: {
-        content: text&.content,
+        children: text&.children&.map { |e| { text: e.text } },
       },
       category: {
         content: category&.content,
