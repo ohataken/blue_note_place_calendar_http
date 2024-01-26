@@ -38,7 +38,7 @@ class CalendarCard
         href: anchor && anchor["href"],
       },
       day: {
-        children: day&.children&.map { |e| { text: e.text.strip } }
+        children: day&.children&.map { |e| { text: e.text } }
       },
       image: {
         src: image && image["src"],
