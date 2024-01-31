@@ -41,9 +41,7 @@ class CalendarCard
       anchor: {
         href: anchor && anchor["href"],
       },
-      day: {
-        children: day_node&.children&.map { |e| { text: e.text } }
-      },
+      day: day,
       image: {
         src: image_node && image_node["src"],
       },
