@@ -20,6 +20,10 @@ class CalendarCard
     @day_node ||= @node.at_css("a > div.m_calCardHead > div.m_calCardDay")
   end
 
+  def day
+    day_node&.children&.at(0)&.text&.strip.to_i
+  end
+
   def image_node
     @image_node ||= @node.at_css("a > div.m_calCardHead > div.m_calCardImage > img")
   end
