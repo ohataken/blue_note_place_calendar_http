@@ -8,8 +8,8 @@ require "./calendar_card"
 get "/live/:cal" do
   origin_host = ENV["ORIGIN_HOST"]
   cal = params["cal"]
-  uri = URI("#{origin_host}/live/?cal=#{cal}")
   nodeset = CalendarCache.cache cal.to_s do
+    uri = URI("#{origin_host}/live/?cal=#{cal}")
     html_doc = Nokogiri::HTML(URI.open(uri))
     html_doc.css("div.calBoardCardsBody > div.c_calBoardCard")
   end
