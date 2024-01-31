@@ -16,20 +16,20 @@ class CalendarCard
     @anchor ||= @node.at_css("a")
   end
 
-  def day
-    @day ||= @node.at_css("a > div.m_calCardHead > div.m_calCardDay")
+  def day_node
+    @day_node ||= @node.at_css("a > div.m_calCardHead > div.m_calCardDay")
   end
 
-  def image
-    @image ||= @node.at_css("a > div.m_calCardHead > div.m_calCardImage > img")
+  def image_node
+    @image_node ||= @node.at_css("a > div.m_calCardHead > div.m_calCardImage > img")
   end
 
-  def text
-    @text ||= @node.at_css("a > div.m_calCardBody > p.m_calCardText")
+  def text_node
+    @text_node ||= @node.at_css("a > div.m_calCardBody > p.m_calCardText")
   end
 
-  def category
-    @category ||= @node.at_css("a > div.m_calCardBody > span.m_calCardCat")
+  def category_node
+    @category_node ||= @node.at_css("a > div.m_calCardBody > span.m_calCardCat")
   end
 
   def to_hash
@@ -38,16 +38,16 @@ class CalendarCard
         href: anchor && anchor["href"],
       },
       day: {
-        children: day&.children&.map { |e| { text: e.text } }
+        children: day_node&.children&.map { |e| { text: e.text } }
       },
       image: {
-        src: image && image["src"],
+        src: image_node && image_node["src"],
       },
       body: {
-        children: text&.children&.map { |e| { text: e.text } },
+        children: text_node&.children&.map { |e| { text: e.text } },
       },
       category: {
-        content: category&.content,
+        content: category_node&.content,
       }
     }
   end
