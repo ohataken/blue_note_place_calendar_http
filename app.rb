@@ -6,7 +6,7 @@ require "nokogiri"
 require "./calendar_cache"
 require "./calendar_card"
 
-get "/calendar/:year/:month" do
+get "/calendar/:year/:month/:day" do
   origin_host = ENV["ORIGIN_HOST"]
   cal = params["year"] + params["month"]
   nodeset = CalendarCache.cache cal.to_s do
@@ -14,6 +14,10 @@ get "/calendar/:year/:month" do
     html_doc = Nokogiri::HTML(URI.open(uri))
     html_doc.css("div.calBoardCardsBody > div.c_calBoardCard")
   end
-  cards = CalendarCard.from_nodeset nodeset
-  json cards
+
+  card = CalendarCard.from_nodeset(nodeset).find do |card|
+    card.day == params["day"].to_i
+  end
+
+  json card
 end
