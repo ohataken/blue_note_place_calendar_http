@@ -1,4 +1,5 @@
 require "sinatra"
+require "sinatra/json"
 require "uri"
 require "open-uri"
 require "nokogiri"
@@ -14,5 +15,5 @@ get "/live/:cal" do
     html_doc.css("div.calBoardCardsBody > div.c_calBoardCard")
   end
   cards = CalendarCard.from_nodeset nodeset
-  cards.to_json
+  json cards
 end
