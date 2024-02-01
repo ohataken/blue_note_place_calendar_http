@@ -6,9 +6,9 @@ require "nokogiri"
 require "./calendar_cache"
 require "./calendar_card"
 
-get "/live/:cal" do
+get "/calendar/:year/:month" do
   origin_host = ENV["ORIGIN_HOST"]
-  cal = params["cal"]
+  cal = params["year"] + params["month"]
   nodeset = CalendarCache.cache cal.to_s do
     uri = URI("#{origin_host}/live/?cal=#{cal}")
     html_doc = Nokogiri::HTML(URI.open(uri))
