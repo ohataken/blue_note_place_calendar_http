@@ -1,7 +1,9 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-gem "sinatra"
-gem "sinatra-contrib"
-gem "rackup"
-gem "nokogiri"
-gem "rubocop"
+source 'https://rubygems.org'
+
+gem 'nokogiri'
+gem 'rackup'
+gem 'rubocop'
+gem 'sinatra'
+gem 'sinatra-contrib'

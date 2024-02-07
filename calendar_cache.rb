@@ -1,4 +1,6 @@
-require "forwardable"
+# frozen_string_literal: true
+
+require 'forwardable'
 
 class CalendarCache
   extend Forwardable
@@ -8,7 +10,7 @@ class CalendarCache
       @singleton ||= new
     end
 
-    def cache key, &block
+    def cache(key, &block)
       singleton.cache key, &block
     end
   end
@@ -19,10 +21,10 @@ class CalendarCache
 
   delegate :[] => :@hash
   delegate :[]= => :@hash
-  delegate :has_key? => :@hash
+  delegate key?: :@hash
 
-  def cache key
-    if has_key? key
+  def cache(key)
+    if key? key
       @hash[key]
     else
       @hash[key] = yield
