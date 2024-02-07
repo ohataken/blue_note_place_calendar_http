@@ -6,7 +6,7 @@ require "nokogiri"
 require "./calendar_cache"
 require "./calendar_card"
 
-get "/calendar/:year/:month/:day" do
+get "/api/calendar/:year/:month/:day" do
   origin_host = ENV["ORIGIN_HOST"]
   cal = params["year"] + params["month"]
   nodeset = CalendarCache.cache cal.to_s do
