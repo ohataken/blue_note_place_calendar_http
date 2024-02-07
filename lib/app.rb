@@ -5,8 +5,8 @@ require 'sinatra/json'
 require 'uri'
 require 'open-uri'
 require 'nokogiri'
-require './calendar_cache'
-require './calendar_card'
+require './lib/calendar_cache'
+require './lib/calendar_card'
 
 get '/api/calendar/:year/:month/:day' do
   origin_host = ENV['ORIGIN_HOST']
